@@ -1,4 +1,32 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}
+/* v5: spacing polish + demo-specific surfaces. Existing palette/fonts preserved. */
+.fleetmap{gap:14px}.tile{padding:16px 18px;min-height:126px;border-radius:16px}
+.tile .th b{font-size:16px;letter-spacing:-.015em}.tile .td{margin-top:4px;line-height:1.35}
+.tile .tl{margin-top:12px;padding:9px 10px;border-radius:10px;background:rgba(255,255,255,.72);font-size:12.5px}
+.tile .tf{margin-top:10px;padding-top:9px;border-top:1px solid var(--zline);gap:14px}
+.portgrid{display:grid;grid-template-columns:1fr 54px 1fr;gap:14px;align-items:stretch;margin-top:16px}
+.portnode{border:1px solid var(--zline);border-radius:14px;padding:18px;background:var(--white);min-height:175px}
+.portnode.fail{border-color:var(--bad);background:var(--bad-f)}.portnode.ok{border-color:var(--ok);background:var(--ok-f)}
+.portarrow{display:flex;align-items:center;justify-content:center;font-size:28px;color:var(--gray)}
+.checkpoint{border:1px solid var(--blue);background:var(--blue-f);border-radius:12px;padding:13px 15px;margin:14px 0}
+.checkpoint b{display:block;margin-bottom:4px}.portlog,.buildterm{background:var(--rt);color:var(--rttext);border-radius:12px;padding:14px 16px;font-family:var(--mono);font-size:11px;line-height:1.65;box-shadow:inset 0 0 0 1px var(--rtline)}
+.portlog{min-height:185px}.portlog .ok,.buildterm .ok{color:#75d69c}.portlog .warn,.buildterm .warn{color:#ffd27a}.portlog .dim,.buildterm .dim{color:var(--rtmute)}
+.buildterm{min-height:260px}.buildterm .prompt{color:var(--cyan)}
+.auditrow td{vertical-align:top}.audit-event{font-weight:650}.audit-detail{display:block;color:var(--gray);font-size:11px;margin-top:3px;line-height:1.4}
+.audit-id{font-family:var(--mono);font-size:10.5px}.audit-resume{background:var(--ok-f)}
+@media(max-width:900px){.portgrid{grid-template-columns:1fr}.portarrow{transform:rotate(90deg)}}
+
+.auditfleet{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:12px}
+.auditcvm{font:inherit;text-align:left;border:1px solid var(--zline);background:var(--white);border-radius:12px;padding:13px 14px;display:flex;align-items:center;justify-content:space-between;gap:14px;cursor:pointer;color:var(--text)}
+.auditcvm:hover{border-color:var(--blue);box-shadow:0 4px 16px rgba(15,23,42,.06)}.auditcvm b{display:block;font-size:12.5px}.auditcvm span{display:block;color:var(--gray);font-size:10.5px;margin-top:3px}
+.auditmeta{text-align:right;font-size:10.5px;color:var(--gray);white-space:nowrap}.auditmeta strong{color:var(--text);font-size:13px}.auditmeta em{font-style:normal;margin-left:8px;color:var(--warn)}.auditmeta em.bad{color:var(--bad)}.auditmeta em.good{color:var(--ok)}
+.linkbtn{border:0;background:none;padding:0;color:var(--blue);font:inherit;font-weight:650;cursor:pointer}
+textarea:focus{border-color:var(--blue)!important;box-shadow:0 0 0 3px var(--blue-f)}
+@media(max-width:900px){.auditfleet{grid-template-columns:1fr}}
+
+.sourcemodes{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:22px}.sourcemode{font:inherit;text-align:left;border:1px solid var(--zline);background:var(--white);border-radius:14px;padding:16px;cursor:pointer;color:var(--text)}.sourcemode.on{border-color:var(--blue);box-shadow:0 0 0 3px var(--blue-f)}.sourcemode b{display:block;font-size:14px}.sourcemode span{display:block;color:var(--gray);font-size:11.5px;line-height:1.45;margin-top:5px}.intentcomposer{margin-top:14px;border:1px solid var(--zline);border-radius:14px;padding:16px;background:var(--white)}.intentcomposer textarea{width:100%;min-height:128px;resize:vertical;margin-top:8px;border:1px solid var(--zline);border-radius:11px;padding:13px 14px;font-family:var(--sans);font-size:13px;line-height:1.55;color:var(--text);background:var(--white)}.intentfoot{display:flex;justify-content:space-between;align-items:center;gap:18px;margin-top:10px}.intentfoot .sub{max-width:560px}
+@media(max-width:800px){.sourcemodes{grid-template-columns:1fr}.intentfoot{align-items:flex-start;flex-direction:column}}
+</style></head><body>
 <title>CVM · Enterprise Container Platform (Copy)</title>
 <style>
 :root{
@@ -669,6 +697,23 @@ textarea{resize:vertical;line-height:1.5}
 body.p-exec .tbtn#consoleBtn,body.p-agent .tbtn#consoleBtn{display:none}
 body.p-exec .tbtn#scenBtn,body.p-agent .tbtn#scenBtn{display:none}
 
+
+/* v5: spacing polish + demo-specific surfaces. Existing palette/fonts preserved. */
+.fleetmap{gap:14px}.tile{padding:16px 18px;min-height:126px;border-radius:16px}
+.tile .th b{font-size:16px;letter-spacing:-.015em}.tile .td{margin-top:4px;line-height:1.35}
+.tile .tl{margin-top:12px;padding:9px 10px;border-radius:10px;background:rgba(255,255,255,.72);font-size:12.5px}
+.tile .tf{margin-top:10px;padding-top:9px;border-top:1px solid var(--zline);gap:14px}
+.portgrid{display:grid;grid-template-columns:1fr 54px 1fr;gap:14px;align-items:stretch;margin-top:16px}
+.portnode{border:1px solid var(--zline);border-radius:14px;padding:18px;background:var(--white);min-height:175px}
+.portnode.fail{border-color:var(--bad);background:var(--bad-f)}.portnode.ok{border-color:var(--ok);background:var(--ok-f)}
+.portarrow{display:flex;align-items:center;justify-content:center;font-size:28px;color:var(--gray)}
+.checkpoint{border:1px solid var(--blue);background:var(--blue-f);border-radius:12px;padding:13px 15px;margin:14px 0}
+.checkpoint b{display:block;margin-bottom:4px}.portlog,.buildterm{background:var(--rt);color:var(--rttext);border-radius:12px;padding:14px 16px;font-family:var(--mono);font-size:11px;line-height:1.65;box-shadow:inset 0 0 0 1px var(--rtline)}
+.portlog{min-height:185px}.portlog .ok,.buildterm .ok{color:#75d69c}.portlog .warn,.buildterm .warn{color:#ffd27a}.portlog .dim,.buildterm .dim{color:var(--rtmute)}
+.buildterm{min-height:260px}.buildterm .prompt{color:var(--cyan)}
+.auditrow td{vertical-align:top}.audit-event{font-weight:650}.audit-detail{display:block;color:var(--gray);font-size:11px;margin-top:3px;line-height:1.4}
+.audit-id{font-family:var(--mono);font-size:10.5px}.audit-resume{background:var(--ok-f)}
+@media(max-width:900px){.portgrid{grid-template-columns:1fr}.portarrow{transform:rotate(90deg)}}
 </style>
 
 <div class="app" id="app">
@@ -903,7 +948,7 @@ function navBadges(){const b={};const at=attention();if(at.length){const k={exec
 function nav(){const bd=navBadges();setHTML('nav',navFor().map(n=>n.grp?`<div class="sep"></div><div class="grp">${n.grp}</div>`:`<button data-do="go" data-arg="${n.id}" class="${S.page===n.id||(n.id==='containers'&&(S.page==='container'||S.page==='lineage'))?'on':''}"><span class="ic">${n.ic}</span>${n.l}${bd[n.id]?`<span class="nb ${bd[n.id].cls}">${bd[n.id].n}</span>`:''}</button>`).join(''))}
 function crumb(parts){setHTML('crumb',parts.map((p,i)=>i===parts.length-1?`<b>${p}</b>`:`<span class="cp">${p}</span>`).join('<span class="cp" style="margin:0 8px;color:#c9d3ee">/</span>'))}
 function render(page,parts,html,id=null){S.page=page;S.pageId=id;nav();crumb(parts);const p=$('page');p.innerHTML=html;p.scrollTop=0;p.style.animation='none';void p.offsetWidth;p.style.animation=''}
-function go(page){closeMenu();closeScenario();stopStream();({home,exec:execPage,queue:queuePage,activity:activityPage,containers:containersPage,build:buildPage,live:home,transactions:transactionsPage,insights:insightsPage,policies:policiesPage,security:securityPage,cost:costPage,dev:devPage}[page]||home)()}
+function go(page){closeMenu();closeScenario();stopStream();({home,exec:execPage,queue:queuePage,activity:activityPage,containers:containersPage,build:buildPage,portability:portabilityPage,audit:auditPage,live:home,transactions:transactionsPage,insights:insightsPage,policies:policiesPage,security:securityPage,cost:costPage,dev:devPage}[page]||home)()}
 function moreActivity(){const box=$('activity');if(!box)return;const all=box.dataset.n==='60';box.dataset.n=all?'6':'60';box.innerHTML=activityHTML(all?6:60);const b=document.querySelector('[data-do="moreActivity"]');if(b)b.textContent=all?'Show all':'Show less'}
 const sum=k=>S.containers.reduce((x,c)=>x+(c[k]||0),0);
 const DAYS=['Sep 4','','Sep 6','','Sep 8','','Sep 10','','Sep 12','','Sep 14','','Sep 16','Sep 17'];
@@ -929,7 +974,7 @@ function sysStats(){const fl=S.containers.filter(inFlight).length;const applied=
 function home(){const cs=S.containers;const at=attention();const st=sysStats();
   render('home',['Fleet','Home'],`<div class="syshead"><div><div class="eye">CVM · Northstar production · ${ROOT}</div><h1>${cs.length} containers · <span class="ok">${fleetRel()}% reliable</span></h1><div class="sub">Each container runs its own transactions and self-recovers from failures. Attention items are highlighted.</div></div><div class="livebadge"><i></i>live</div></div>
 <div class="bigstats" style="margin-top:14px">${big({id:'b-fl',label:'In flight',value:st.fl,sub:'transactions right now'})}${big({id:'b-runs',label:'Transactions today',value:fmt(sum('runs')),sub:'across the fleet'})}${big({id:'b-rel',label:'Reliability',value:fleetRel()+'%',sub:'+1.5 pt over 14 days',spark:FLEET_REL})}${big({id:'b-auto',label:'Self-recovered',value:fmt(sum('auto')),sub:'failures recovered automatically'})}${big({id:'b-human',label:'Manual interventions',value:sum('human'),sub:'manual interventions',tone:'warn'})}${big({id:'b-applied',label:'Rules applied',value:fmt(st.applied),sub:'learned rules applied'})}</div>
-<div class="section"><div class="cardhead"><h3>Fleet</h3><div style="display:flex;gap:8px;align-items:center"><span class="sub">select a container for detail</span><button class="btn ghost sm" data-do="go" data-arg="containers">Manage</button><button class="btn blue sm" data-do="go" data-arg="build">＋ New container</button></div></div><div class="fleetmap" id="fleetmap">${cs.map(tileHTML).join('')}</div></div>
+<div class="section"><div class="cardhead"><div><h3 style="margin:0">Fleet</h3><span class="sub"><b style="color:var(--text)">${cs.length}</b> total CVM containers</span></div><div style="display:flex;gap:8px;align-items:center"><span class="sub">select a container for detail</span><button class="btn ghost sm" data-do="go" data-arg="containers">Manage</button><button class="btn blue sm" data-do="go" data-arg="build">＋ New container</button></div></div><div class="fleetmap" id="fleetmap">${cs.map(tileHTML).join('')}</div></div>
 <div class="section">${timelineHTML()}</div>
 ${S.fresh?`<div class="banner ok"><div class="bt"><b>${containerBy(S.fresh).app} joined the fleet</b><span>${containerBy(S.fresh).id} · same fabric and policies · ${containerBy(S.fresh).rules.length} rules ready from simulation.</span></div><div class="ba"><button class="btn ghost sm" data-do="openContainer" data-arg="${S.fresh}">Open container</button></div></div>`:''}
 <div class="grid2"><div class="section"><div class="cardhead"><h3>Awaiting review</h3><span class="status ${at.length?'s-warn':'s-ok'}" id="b-wait">${at.length}</span></div><div id="waitlist">${attentionList()}</div></div><div class="section"><div class="cardhead"><h3>Learning · live</h3><span class="sub">rules applied and learned in real time</span></div><div class="lfeed" id="learnfeed">${learnFeedHTML()}</div></div></div>
@@ -1005,7 +1050,7 @@ function insightsPage(){const rules=S.containers.flatMap(c=>c.rules.map(r=>({c,r
   render('insights',['Operate','Reliability'],`<div class="pagehead"><div><div class="eye">Reliability & uptime · self-learning model</div><h1>Reliability and uptime</h1><div class="sub">Reliability, availability and manual-intervention rate, with rules learned from simulation, execution and fixes.</div></div></div>
 <div class="bigstats">${big({id:'r-rel',label:'Reliability',value:fleetRel2()+'%',sub:'+1.5 pt over 14 days',spark:FLEET_REL})}${big({label:'Availability',value:AVAIL[13].toFixed(2)+'%',sub:'transactions never lost mid-flight',spark:AVAIL})}${big({id:'r-int',label:'Manual interventions',value:(S.containers.reduce((a,c)=>a+c.human,0)/Math.max(1,sum('runs'))*1000).toFixed(1)+' / 1,000',sub:'down from '+INTERV[0]+' two weeks ago',spark:INTERV,tone:'warn'})}${big({id:'r-rules',label:'Rules in force',value:rules.length,sub:`${by('simulation')} simulation · ${by('execution')} execution · ${by('human')} people`,spark:RULES})}${big({id:'r-app',label:'Rules applied',value:fmt(applied),sub:'failures recovered automatically'})}${big({id:'r-auto',label:'Self-recovered',value:fmt(sum('auto')),sub:'today'})}</div>
 <div class="section"><div class="cardhead"><h3>Fleet reliability · last ten minutes</h3><span class="sub">sampled as transactions complete</span></div>${(sampleFleet(),fleetLiveHTML())}</div>
-<div class="section"><div class="cardhead"><h3>How the model learns</h3><span class="sub">rule sources, evaluation gate and rules in force</span></div><div class="howlearn"><div class="src sim"><b>${by('simulation')}</b><span>learned in simulation</span><em>pre-deployment simulation with injected faults</em></div><div class="src exec"><b>${by('execution')}</b><span>learned in execution</span><em>production completions, runtime moves and repeated recoveries</em></div><div class="src hum"><b>${by('human')}</b><span>learned from people</span><em>operator fixes, applied automatically</em></div><div class="arrowc">→</div><div class="src gate"><b>eval gate</b><span>quality and policy checks</span><em>2 rejected this week</em></div><div class="arrowc">→</div><div class="src force"><b>${rules.length}</b><span>rules in force</span><em>applied ${fmt(applied)}× · ${today.length} learned today</em></div></div></div>
+<div class="section"><div class="cardhead"><h3>CVM Self-Learning Model</h3><span class="sub">rule sources, evaluation gate and rules in force</span></div><div class="howlearn"><div class="src sim"><b>${by('simulation')}</b><span>learned in simulation</span><em>pre-deployment simulation with injected faults</em></div><div class="src exec"><b>${by('execution')}</b><span>learned in execution</span><em>production completions, runtime moves and repeated recoveries</em></div><div class="src hum"><b>${by('human')}</b><span>learned from people</span><em>operator fixes, applied automatically</em></div><div class="arrowc">→</div><div class="src gate"><b>eval gate</b><span>quality and policy checks</span><em>2 rejected this week</em></div><div class="arrowc">→</div><div class="src force"><b>${rules.length}</b><span>rules in force</span><em>applied ${fmt(applied)}× · ${today.length} learned today</em></div></div></div>
 <div class="grid2"><div class="section"><div class="cardhead"><h3>People needed per 1,000 transactions</h3><span class="sub">falling as rules accumulate</span></div>${areaChart('intchart',INTERV,{labels:DAYS,unit:'per 1,000',min:0,h:150})}</div><div class="section"><div class="cardhead"><h3>Rules in force</h3><span class="sub">rising · fleet</span></div>${areaChart('ruleschart',RULES,{labels:DAYS,unit:'rules',min:20,h:150})}</div></div>
 <div class="grid2"><div class="section"><div class="cardhead"><h3>Uptime · 14 days</h3><span class="sub">availability · no transactions lost mid-flight</span></div>${areaChart('availchart',AVAIL,{labels:DAYS,unit:'% available',min:99.9,h:130})}</div><div class="section"><div class="cardhead"><h3>Uptime by container</h3><span class="sub">today · transactions lost</span></div><div class="relrows">${S.containers.slice().sort((a,b)=>b.rel-a.rel).map((c,i)=>`<div class="rr" data-do="openContainer" data-arg="${c.n}"><span>${c.name}</span><div class="t"><i style="width:${(96+i*0.3).toFixed(0)}%"></i></div><b>${(99.99-i*0.004).toFixed(3)}%</b><em>0 lost · ${c.ports} moved</em></div>`).join('')}</div></div></div>
 <div class="grid2"><div class="section"><div class="cardhead"><h3>Reliability by container</h3><span class="sub">today</span></div>${relRows()}</div><div class="section"><div class="cardhead"><h3>Learned today</h3><span class="sub">newest first</span></div><div class="plist" id="learnedtoday">${(today.length?today:rules.filter(x=>x.r.from==='human')).slice(-6).reverse().map(({c,r})=>`<div class="pat ${r.from}" data-do="openLineage" data-arg="${c.n}"><span class="pstage">${r.from}</span><b>${esc(r.name)}</b><span class="pm">${c.app} · ${r.id} · ${esc(r.ref)} · ${r.when}</span></div>`).join('')||'<div class="note">Nothing learned yet today.</div>'}</div><div style="margin-top:12px" id="rulesbar">${stackbar([{l:'Simulation',v:by('simulation'),c:'#7e9bf2'},{l:'Execution',v:by('execution'),c:'#3fa07f'},{l:'People',v:by('human'),c:'#d9a441'}])}</div></div></div>
@@ -1309,8 +1354,28 @@ function readSource(src){const s=src.toLowerCase();const has=(...w)=>w.some(x=>s
 const TAGL={gate:'policy gate',irr:'irreversible',ck:'checkpoint',none:'reversible'};
 function flowGraph(flow,{edit=false,shown=flow.length,gid='fg'}={}){return`<div class="fg" id="${gid}">${flow.map((x,i)=>`<div class="fgrow${i<shown?' in':''}" data-i="${i}"><div class="fgn t-${x[1]}"><span class="fgi">${i+1}</span>${edit?`<input value="${esc(x[0])}" data-input="editFlow" data-i="${i}">`:`<span class="fgl">${esc(x[0])}</span>`}<span class="ftag ${x[1]}">${TAGL[x[1]]}</span>${edit?`<button class="rm" data-do="removeFlow" data-arg="${i}" title="Remove step">✕</button>`:''}</div>${x[2]?`<div class="fgb"><span class="fgbl"></span><div class="fgbn"><span class="fgbt">else</span>${edit?`<input value="${esc(x[2])}" data-input="editBranch" data-i="${i}">`:`<span class="fgl">${esc(x[2])}</span>`}</div></div>`:''}${i<flow.length-1?`<div class="fga"><i></i></div>`:''}</div>`).join('')}</div>`}
 function buildPage(){const b=S.build;render('build',['Fleet','CVM Builder'],`<div class="bwrap"><div class="bstepper">${BSTAGES.map((x,i)=>`<div class="bs2 ${i===b.stage?'on':i<b.stage?'done':''}"><i>${i<b.stage?'✓':i+1}</i>${x}</div>`).join('')}</div><div id="bstage">${buildStage()}</div></div>`)}
+function setBuildSourceMode(mode){S.build.sourceMode=mode;buildPage()}
+function constructFromIntent(){
+ const b=S.build; const el=$('sourceIntent'); if(el)b.nlIntent=el.value;
+ if(!(b.nlIntent||'').trim())return;
+ b.source='Natural language intent'; b.analyzing=true; b.stage=1; buildPage();
+ setTimeout(()=>{b.analyzing=false;if(b.read)b.read.intent=b.nlIntent;buildPage()},900);
+}
+function useIntentPreset(name){
+ const p=PRESETS.find(x=>x.name===name)||PRESETS[0];
+ S.build.nlIntent=`${p.note}. Complete the workflow safely, respect applicable policy and access controls, and preserve durable state across failures.`;
+ buildPage();
+}
 function buildStage(){const b=S.build;const R=b.read;
-  if(b.stage===0)return`<div class="bscreen"><div class="eye">CVM Builder</div><h1>New container</h1><div class="sub">Reads an existing agent's code, connectors, identities and policies into an editable execution graph.</div><div class="srcbox"><input type="text" id="bsource" placeholder="repository · package · endpoint" value="${esc(b.source)}" data-input="bsourceInput"><button class="btn blue" data-do="deconstruct" id="deconBtn" ${b.source.trim().length>4?'':'disabled'}>Construct →</button></div><div class="label" style="margin:26px 0 8px">Ready workflows</div><div class="wfcards">${PRESETS.map(p=>`<div class="wfcard${b.source===p.src?' on':''}" data-do="setSource" data-arg="${p.src}"><b>${p.name}</b><span class="mono">${p.src}</span><span>${p.domain} · ${p.steps} steps · ${p.note}</span></div>`).join('')}</div><div class="threes"><div><b>Execution graph</b><span>Steps, branches, irreversible actions and policy gates.</span></div><div><b>Data & access</b><span>Connectors, ACLs and runtime identity.</span></div><div><b>Policies</b><span>Applicable company policies and local policies.</span></div></div></div>`;
+  if(b.stage===0){if(!b.sourceMode)b.sourceMode='existing';return`<div class="bscreen"><div class="eye">CVM Builder · Source</div><h1>Choose the source</h1><div class="sub">A CVM can start from a natural-language intent or from an existing agent. Existing agents bring their code/configuration, data sources, access and policies into the construction flow.</div>
+<div class="sourcemodes">
+<button class="sourcemode ${b.sourceMode==='intent'?'on':''}" data-do="setBuildSourceMode" data-arg="intent"><b>Natural Language</b><span>Describe the outcome you want. CVM constructs a starting execution graph for review.</span></button>
+<button class="sourcemode ${b.sourceMode==='existing'?'on':''}" data-do="setBuildSourceMode" data-arg="existing"><b>Existing Agent</b><span>Import agent code/config plus its data sources, ACLs and applicable policies.</span></button>
+</div>
+${b.sourceMode==='intent'?`<div class="intentcomposer"><label class="label" for="sourceIntent">Natural language intent</label><textarea id="sourceIntent" placeholder="Example: Resolve an approved customer refund end to end. Verify the claim, honor the approved customer and amount, prevent duplicate payment, and pause if the external payment outcome is uncertain.">${esc(b.nlIntent||'')}</textarea><div class="intentfoot"><span class="sub">This intent is the source. Data, access and policies are reviewed after CVM constructs the initial graph.</span><button class="btn blue" data-do="constructFromIntent" ${(b.nlIntent||'').trim().length>15?'':'disabled'} id="intentConstruct">Construct from intent →</button></div></div>`:`<div class="srcbox"><input type="text" id="bsource" placeholder="repository · package · endpoint" value="${esc(b.source)}" data-input="bsourceInput"><button class="btn blue" data-do="deconstruct" id="deconBtn" ${b.source.trim().length>4?'':'disabled'}>Import agent →</button></div><div class="note" style="margin-top:10px">CVM reads the existing agent and surfaces its execution graph, data connectors, identities/ACLs and policies for review before build.</div>`}
+<div class="label" style="margin:26px 0 8px">${b.sourceMode==='intent'?'Example intents':'Ready workflows'}</div>
+<div class="wfcards">${PRESETS.map(p=>b.sourceMode==='intent'?`<div class="wfcard" data-do="useIntentPreset" data-arg="${p.name}"><b>${p.name}</b><span>${p.note}</span><span>${p.domain} · sample intent</span></div>`:`<div class="wfcard${b.source===p.src?' on':''}" data-do="setSource" data-arg="${p.src}"><b>${p.name}</b><span class="mono">${p.src}</span><span>${p.domain} · ${p.steps} steps · ${p.note}</span></div>`).join('')}</div>
+<div class="threes"><div><b>Execution graph</b><span>Steps, branches, irreversible actions and policy gates.</span></div><div><b>Data & access</b><span>Connectors, ACLs and runtime identity.</span></div><div><b>Policies</b><span>Applicable company policies and local policies.</span></div></div></div>`}
   if(b.stage===1){if(b.analyzing)return`<div class="bscreen"><div class="eye">Constructing</div><h1>Reading <span class="mono" style="font-size:.8em">${esc(b.source)}</span></h1><div class="rail" id="rail" style="max-width:640px;margin-top:20px">${['Cloning repository and reading tools, prompts and handlers','Mapping data connectors and the tables it touches','Reading ACLs and the identity it runs as','Deriving the execution graph and irreversible steps','Matching company policies'].map((s,i)=>`<div class="rs" data-i="${i}"><i></i><span>${s}</span><span class="m"></span></div>`).join('')}</div></div>`;
     return`<div class="bscreen wide"><div class="eye">Constructed · ${esc(b.source)}</div><h1>${R.name}</h1><div class="sub">${esc(R.intent)} Everything below can be edited before the container is built.</div>
 <div class="deck"><div class="dk"><div class="dkh"><div><b>Execution graph</b><div class="sub">Steps can be renamed, added or removed. Checkpoint and policy boundaries are automatic.</div></div><button class="btn ghost sm" data-do="addFlowStep">＋ Step</button></div>${flowGraph(b.flow,{edit:true})}<div class="note">${b.flow.filter(x=>x[1]==='ck'||x[1]==='irr').length} checkpoints · ${b.flow.filter(x=>x[1]==='gate').length} policy gate before ${b.flow.filter(x=>x[1]==='irr').length} irreversible step · ${b.flow.filter(x=>x[2]).length} branch</div></div>
@@ -1319,8 +1384,8 @@ function buildStage(){const b=S.build;const R=b.read;
 <div class="dk"><div class="dkh"><b>Policies</b><button class="btn ghost sm" data-do="localPolicy">＋ Local</button></div>${POLICIES.map(p=>`<label class="tog${b.policies.includes(p.id)?' on':''}"><input type="checkbox" ${b.policies.includes(p.id)?'checked':''} data-change="togglePol" data-i="${p.id}"><div><b>${esc(p.name)}</b><span>${p.id} · ${esc(p.scope)}${p.hold?' · pauses for approval':''}</span></div></label>`).join('')}${b.local.map((l,i)=>`<label class="tog on"><input type="checkbox" checked data-change="removeLocalChk" data-i="${i}"><div><b>${esc(l)}</b><span>local · this container only</span></div></label>`).join('')}</div></div></div>
 <div class="bfoot"><button class="btn ghost" data-do="buildBack">Back</button><button class="btn blue big" data-do="buildContainer">Build container →</button></div></div>`}
   if(b.stage===2){const built=b.built;const k=b.builtLayers??0;return`<div class="bscreen wide"><div class="eye">${built?'Container built':'Building'}</div><h1>${built?`${R.app}`:`Building ${R.app}`}</h1><div class="sub">${built?`${ROOT}/${R.n} · signed · admitted to the fabric · model socket bound after simulation.`:'Packaging the execution graph, connectors, identities, policies and lineage, then signing the image.'}</div>
-<div class="assemble"><div class="cvmbox${built?' sealed':''}" id="cvmbox"><div class="cvmlbl">${R.app} · ${ROOT}/${R.n}</div><div class="cvmside left"><div class="cvmchip${k>=2?' in':''}"><span>DATA</span>${b.sources.filter(x=>x[2]).map(x=>`<b>${x[0]}</b>`).join('')}</div><div class="cvmchip${k>=3?' in':''}"><span>ACCESS</span>${b.access.filter(x=>x[2]).map(x=>`<b>${x[0]}</b>`).join('')}</div></div><div class="cvmgraph" id="cvmgraph">${flowGraph(b.flow,{shown:b.graphShown??0,gid:'fgb'})}</div><div class="cvmside right"><div class="cvmchip${k>=4?' in':''}"><span>POLICY</span>${[...b.policies,...b.local.map(()=>'local')].map(p=>`<b>${p}</b>`).join('')}</div><div class="cvmchip${k>=5?' in':''}"><span>STATE</span><b>${b.flow.filter(x=>x[1]==='ck'||x[1]==='irr').length} checkpoints</b><b>effects ledger</b></div><div class="cvmchip${k>=6?' in':''}"><span>LINEAGE</span><b>lineage_${R.n}</b><b>empty until simulation</b></div></div><div class="cvmfoot${k>=7?' in':''}"><span class="sig">${built?'✓ signed · SEC-024':'signing…'}</span><span class="socket"><span class="sl">MODEL SOCKET</span><span class="mono" style="font-size:10px;color:#b19a5c">empty</span></span></div></div>
-<div class="rail" id="rail">${['Package execution graph','Bind data connectors','Attach identities & ACLs','Attach policies','Write state schema & checkpoints','Attach empty lineage','Sign image · SEC-024'].map((s,i)=>`<div class="rs ${built?'done':''}" data-i="${i}"><i>${built?'✓':''}</i><span>${s}</span><span class="m"></span></div>`).join('')}</div></div>${built?`<div class="bfoot"><button class="btn ghost" data-do="buildBack">Edit</button><button class="btn blue big" data-do="toSim">Simulate →</button></div>`:''}</div>`}
+<div class="grid2" style="align-items:start;margin-top:16px"><div class="buildterm" id="buildterm"><span class="prompt">$ cvm build ${R.app}</span><br><span class="dim">[1/7] reading execution graph...</span><br><span class="${k>=2?'ok':'dim'}">[2/7] packaging data connectors</span><br><span class="${k>=3?'ok':'dim'}">[3/7] binding managed identities + ACLs</span><br><span class="${k>=4?'ok':'dim'}">[4/7] attaching policy bundle</span><br><span class="${k>=5?'ok':'dim'}">[5/7] writing durable state schema + checkpoints</span><br><span class="${k>=6?'ok':'dim'}">[6/7] attaching lineage_${R.n}</span><br><span class="${built?'ok':'dim'}">[7/7] signing image · SEC-024</span><br><br><span class="${built?'ok':'dim'}">${built?'✓ image '+R.app+' built and admitted to CVM Runtime':'building OCI-style CVM artifact...'}</span></div><div><div class="label" style="margin-bottom:8px">Container assembly</div><div class="section"><div class="cardhead"><h3>Input summary</h3><div class="assemble"><div class="cvmbox${built?' sealed':''}" id="cvmbox"><div class="cvmlbl">${R.app} · ${ROOT}/${R.n}</div><div class="cvmside left"><div class="cvmchip${k>=2?' in':''}"><span>DATA</span>${b.sources.filter(x=>x[2]).map(x=>`<b>${x[0]}</b>`).join('')}</div><div class="cvmchip${k>=3?' in':''}"><span>ACCESS</span>${b.access.filter(x=>x[2]).map(x=>`<b>${x[0]}</b>`).join('')}</div></div><div class="cvmgraph" id="cvmgraph">${flowGraph(b.flow,{shown:b.graphShown??0,gid:'fgb'})}</div><div class="cvmside right"><div class="cvmchip${k>=4?' in':''}"><span>POLICY</span>${[...b.policies,...b.local.map(()=>'local')].map(p=>`<b>${p}</b>`).join('')}</div><div class="cvmchip${k>=5?' in':''}"><span>STATE</span><b>${b.flow.filter(x=>x[1]==='ck'||x[1]==='irr').length} checkpoints</b><b>effects ledger</b></div><div class="cvmchip${k>=6?' in':''}"><span>LINEAGE</span><b>lineage_${R.n}</b><b>empty until simulation</b></div></div><div class="cvmfoot${k>=7?' in':''}"><span class="sig">${built?'✓ signed · SEC-024':'signing…'}</span><span class="socket"><span class="sl">MODEL SOCKET</span><span class="mono" style="font-size:10px;color:#b19a5c">empty</span></span></div></div>
+</div></div><div class="rail" id="rail">${['Package execution graph','Bind data connectors','Attach identities & ACLs','Attach policies','Write state schema & checkpoints','Attach empty lineage','Sign image · SEC-024'].map((s,i)=>`<div class="rs ${built?'done':''}" data-i="${i}"><i>${built?'✓':''}</i><span>${s}</span><span class="m"></span></div>`).join('')}</div></div>${built?`<div class="bfoot"><button class="btn ghost" data-do="buildBack">Edit</button><button class="btn blue big" data-do="toSim">Simulate →</button></div>`:''}</div>`}
   if(b.stage===3)return simScreen();
   return`<div class="bscreen"><div class="eye">CVM Container Deployed</div><h1>${R.app} is in production</h1><div class="sub">${ROOT}/${R.n} on ${b.deploy.provider} · ${b.deploy.model} · ${b.sim.rules.length} rules from simulation attached to lineage_${R.n}. Transactions begin on first open.</div><div class="rail" id="rail" style="max-width:640px;margin-top:18px">${['Bind runtime · '+b.deploy.provider+' · '+b.deploy.model,'Admit to fabric · '+ROOT+'/'+R.n,'Attach lineage · '+b.sim.rules.length+' rules from simulation','Start heartbeat'].map(s=>`<div class="rs done"><i>✓</i><span>${s}</span><span class="m"></span></div>`).join('')}</div><div class="bfoot" style="justify-content:flex-start"><button class="btn blue big" data-do="go" data-arg="home">View in fleet →</button><button class="btn ghost" data-do="openContainer" data-arg="${R.n}">Open container</button></div></div>`}
 function imageLayers(R,b){const m=b.model?MODEL_OPTIONS.find(x=>x.id===b.model):null;const L=[['SOURCE',R.src],['INTENT',R.intent.slice(0,70)+'…'],['CONTEXT',b.sources.filter(x=>x[2]).map(x=>x[0]).join(' · ')],['ACCESS',b.access.filter(x=>x[2]).map(x=>x[0]).join(' · ')],['POLICY',[...b.policies,...b.local.map(()=>'local')].join(' · ')],['STATE',`${b.flow.filter(x=>x[1]==='ck'||x[1]==='irr').length} checkpoints · effects ledger`],['LEARNING',`lineage_${R.n} · ${b.sim?b.sim.rules.length+' rules from simulation':'empty until simulation'}`]];return L.map(([k,v],i)=>`<div class="layer${i>=(b.builtLayers??99)?' dimmed':''}"><span class="lk">${k}</span><span class="lv">${esc(v)}</span></div>`).join('')+`<div class="layer model${(b.builtLayers??99)>=7?'':' dimmed'}"><span class="lk">MODEL</span><span class="lv">${m?m.provider:'unbound'}</span><span class="socket"><span class="sl">SOCKET</span>${m?`<span class="mchip"><i style="background:${MODELS[m.name].dot}"></i>${m.name}</span>`:'<span class="mono" style="font-size:10px;color:#b19a5c">empty</span>'}</span></div>`}
@@ -1433,6 +1498,116 @@ function openCall(id){const x=S.calls.find(y=>y.id===id);if(!x)return;const c=co
 <div class="actions" style="justify-content:flex-end"><button class="btn ghost" data-do="closeModal">Close</button></div>`)}
 function openTxG(arg){const [n,id]=arg.split(':');S.active=n;closeModal();setTimeout(()=>openTx(id),50)}
 
+
+/* ---------- Portability demo ---------- */
+function portabilityPage(){
+ const c=containerBy('05'); const from=RUNTIMES.azure;
+ const choices=[
+  {id:'aws',provider:'AWS Bedrock',model:'Claude Sonnet',region:'us-west-2'},
+  {id:'gcp',provider:'Google Vertex AI',model:'Gemini',region:'us-west1'},
+  {id:'openai',provider:'OpenAI',model:'GPT-5',region:'US'}
+ ];
+ if(!S.portModel)S.portModel='aws';
+ const to=choices.find(x=>x.id===S.portModel)||choices[0];
+ if(S.portStep==null)S.portStep=0;
+ const steps=[
+  {n:0,label:'Ready',title:'Original execution is healthy',body:'Customer Refunds is running on Azure AI / GPT-5. Approval has been granted and the payment is pending.',tone:'s-mute'},
+  {n:1,label:'1 · Inject failure',title:'Underlying model + infrastructure becomes unavailable',body:'CVM pauses the execution. It does not discard business state and it does not blindly retry the payment.',tone:'s-bad'},
+  {n:2,label:'2 · Inspect checkpoint',title:'Last durable checkpoint: after_approval',body:'Intent, goal, approval scope, action history and pending payment state are intact outside the failed model.',tone:'s-warn'},
+  {n:3,label:'3 · Choose replacement',title:`Operator selects ${to.provider} / ${to.model}`,body:`${to.provider} / ${to.model} is not active yet. CVM first checks provider eligibility, residency, authority and policy.`,tone:'s-warn'},
+  {n:4,label:'4 · Reconcile + restore',title:'CVM reconciles the external effect and restores permitted context',body:'Payment is still pending, so continuation is safe. Hidden model state is not transferred.',tone:'s-warn'},
+  {n:5,label:'5 · Resume',title:'Resume from after_approval',body:`Execution continues from state=PAYMENT_PENDING on ${to.provider} / ${to.model} and commits the refund once.`,tone:'s-ok'}
+ ];
+ const st=steps[S.portStep];
+ render('portability',['Operate','Portability Demo'],`<div class="pagehead"><div><div class="eye">Demo · operator-controlled portability</div><h1>Move a paused execution to a new runtime</h1><div class="sub">You advance each recovery decision manually. The pauses are intentional so the audience can see what CVM preserves and validates before continuation.</div></div><div class="actions"><button class="btn" data-do="resetPortability">↺ Reset</button></div></div>
+ <div class="section"><div class="cardhead"><div><h3>Customer Refunds · ${c.app}</h3><span class="sub">transaction <span class="mono">tx_refund_1042</span></span></div><span class="status ${st.tone}">${st.label}</span></div>
+ <div class="portgrid"><div class="portnode ${S.portStep>=1?'fail':''}"><div class="eye">MODEL A · ORIGINAL RUNTIME</div><h3>${from.provider} · ${from.model}</h3><div class="sub">Azure · original execution environment</div><div style="margin-top:16px"><span class="status ${S.portStep>=1?'s-bad':'s-ok'}">${S.portStep>=1?'Unavailable · execution paused':'Running'}</span></div></div>
+ <div class="portarrow">→</div>
+ <div class="portnode ${S.portStep>=5?'ok':''}"><div class="eye">MODEL B · REPLACEMENT RUNTIME</div>
+ <div style="margin-top:9px"><label class="label" for="portModel">Choose replacement model</label>
+ <select id="portModel" data-do="choosePortModel" ${S.portStep>=5?'disabled':''} style="width:100%;margin-top:7px;border:1px solid var(--zline);border-radius:10px;padding:10px 11px;background:var(--white);color:var(--text);font-family:var(--sans);font-size:12.5px">
+ ${choices.map(x=>`<option value="${x.id}" ${x.id===S.portModel?'selected':''}>${x.provider} · ${x.model}</option>`).join('')}</select></div>
+ <div class="sub" style="margin-top:9px">${to.region} · operator-selected replacement</div>
+ <div style="margin-top:16px"><span class="status ${S.portStep>=5?'s-ok':S.portStep>=3?'s-warn':'s-mute'}">${S.portStep>=5?'Resumed from checkpoint':S.portStep>=3?'Selected · validation pending':'Choose before handoff'}</span></div></div></div>
+ <div class="checkpoint"><b>Last durable checkpoint · <span class="mono">after_approval</span></b><span>Intent: resolve customer claim · Goal: complete $10,000 refund · Claim verified · Approval bound to customer + $10,000 · Payment pending</span><div class="mono" style="margin-top:6px">checkpoint sha256:7c91b4e2a18f · state=PAYMENT_PENDING</div></div>
+ <div class="grid2" style="align-items:stretch"><div class="panel" style="padding:16px"><div class="eye">CURRENT STEP</div><h3 style="margin-top:7px">${st.title}</h3><div class="sub" style="line-height:1.55">${st.body}</div><div style="margin-top:16px">${S.portStep<5?`<button class="btn blue" data-do="advancePortability">Continue to ${steps[S.portStep+1].label} →</button>`:`<button class="btn" data-do="resetPortability">Replay manually</button>`}</div><div class="sub" style="margin-top:10px">A short 650 ms hold is added after each click so each state change reads clearly in a live demo.</div></div>
+ <div><div class="label" style="margin-bottom:7px">Recovery log</div><div class="portlog">${portLogFor(S.portStep)}</div></div></div></div>`)}
+
+function portLogFor(step){
+ const choice={aws:['AWS Bedrock','Claude Sonnet'],gcp:['Google Vertex AI','Gemini'],openai:['OpenAI','GPT-5']}[S.portModel||'aws']; const dest=choice[0]+' / '+choice[1];
+ const lines=[
+ ['dim','09:42:11  INFO  checkpoint.write     after_approval · state=PAYMENT_PENDING'],
+ ['warn','09:42:12  ERROR model.invoke        Azure AI / GPT-5 unavailable · worker lost'],
+ ['warn','09:42:12  WARN  execution.pause     transaction suspended · no blind retry'],
+ ['ok','09:42:16  INFO  checkpoint.inspect    after_approval sha256:7c91b4e2a18f · state intact'],
+ ['ok','09:42:21  INFO  runtime.select        '+dest+' · operator selected'],
+ ['ok','09:42:21  INFO  policy.recheck        approval scope + authority valid'],
+ ['ok','09:42:27  INFO  effect.reconcile      payment status=pending · safe to continue'],
+ ['ok','09:42:27  INFO  context.restore       intent + goal + action history + permitted context'],
+ ['ok','09:42:33  INFO  execution.resume      RESUMED FROM checkpoint after_approval · state=PAYMENT_PENDING · '+dest],
+ ['ok','09:42:34  INFO  payment.issue         $10,000 · committed once'],
+ ['ok','09:42:34  INFO  transaction.complete  outcome retained in lineage_05']
+ ];
+ const count=[1,3,4,6,8,11][step]||1;
+ return lines.slice(0,count).map(x=>`<span class="${x[0]}">${x[1]}</span>`).join('<br>');
+}
+function choosePortModel(v){S.portModel=v;portabilityPage()}
+function advancePortability(){
+ if(S.portBusy||S.portStep>=5)return;S.portBusy=true;
+ const btn=document.querySelector('[data-do="advancePortability"]');if(btn){btn.disabled=true;btn.textContent='Applying step…'}
+ setTimeout(()=>{S.portStep++;S.portBusy=false;portabilityPage()},650);
+}
+function resetPortability(){S.portStep=0;S.portBusy=false;portabilityPage()}
+
+/* ---------- Audit logs ---------- */
+function auditPage(){
+ const events=[
+  ['09:42:34','05','tx_refund_1042','transaction.complete','Completed on replacement runtime','ok'],
+  ['09:42:33','05','tx_refund_1042','execution.resume','Resumed from checkpoint after_approval','ok'],
+  ['09:42:27','05','tx_refund_1042','effect.reconcile','Payment state reconciled before continuation','ok'],
+  ['09:42:21','05','tx_refund_1042','runtime.rebind','Replacement runtime selected','ok'],
+  ['09:42:12','05','tx_refund_1042','execution.pause','Model / infrastructure unavailable','warn'],
+  ['09:41:58','01','tx_claim_8814','effect.commit','Claim update committed','ok'],
+  ['09:41:52','03','tx_invoice_6620','policy.evaluate','Finance approval policy passed','ok'],
+  ['09:41:47','08','tx_incident_2049','tool.invoke','Runbook action executed','ok'],
+  ['09:41:31','02','tx_vendor_4412','approval.wait','Waiting for procurement decision','warn'],
+  ['09:41:18','07','tx_fraud_7091','policy.block','High-risk transfer blocked','bad'],
+  ['09:40:55','10','tx_employee_9910','approval.wait','Waiting for identity approval','warn'],
+  ['09:40:42','04','tx_access_1207','checkpoint.write','Provisioning checkpoint persisted','ok'],
+  ['09:40:18','06','tx_contract_5150','review.required','Legal exception requires review','bad'],
+  ['09:39:57','09','tx_supply_3477','effect.reconcile','Supplier update outcome reconciled','ok']
+ ];
+ if(S.auditContainer){
+   const c=containerBy(S.auditContainer), rows=events.filter(e=>e[1]===S.auditContainer);
+   const portability=S.auditContainer==='05';
+   const detail=portability?[
+    ['09:42:34','transaction.complete','Completed on replacement runtime','outcome retained in lineage_05'],
+    ['09:42:33','execution.resume','Resumed from checkpoint after_approval','state=PAYMENT_PENDING · replacement runtime recorded in execution lineage'],
+    ['09:42:27','context.restore','Permitted semantic context restored','intent + goal + action history + permitted prompts/results'],
+    ['09:42:27','effect.reconcile','Payment state reconciled before continuation','pending · safe to continue · no duplicate effect'],
+    ['09:42:21','policy.recheck','Authority + approval revalidated','customer + $10,000 + refund action still valid'],
+    ['09:42:21','runtime.rebind','Replacement model selected','SEC-004 passed · residency + provider eligibility checked'],
+    ['09:42:16','checkpoint.inspect','after_approval verified','sha256:7c91b4e2a18f · state=PAYMENT_PENDING'],
+    ['09:42:12','execution.pause','Paused after model / infrastructure failure','durable state retained · no blind retry'],
+    ['09:42:11','checkpoint.write','after_approval persisted','approval bound to customer + $10,000']
+   ]:rows.map(r=>[r[0],r[3],r[4],`container ${r[1]} · ${r[2]}`]);
+   render('audit',['Governance','Audit Logs',c.name],`<div class="pagehead"><div><button class="btn" data-do="auditBack">← All CVMs</button><div class="eye" style="margin-top:14px">AI Admin · CVM audit detail</div><h1>${c.name}</h1><div class="sub">${c.app} · ${RUNTIMES[c.rt].provider} / ${RUNTIMES[c.rt].model} · container ${c.n}</div></div><div class="actions">${portability?'<button class="btn blue" data-do="go" data-arg="portability">Open portability demo →</button>':''}</div></div>
+   ${portability?`<div class="checkpoint"><b>Portability lineage · <span class="mono">tx_refund_1042</span></b><span>This CVM contains the model/infrastructure failure, checkpoint restore, policy recheck, effect reconciliation, runtime rebind and resume sequence.</span></div>`:''}
+   <div class="section"><div class="cardhead"><h3>Audit trail</h3><span class="sub">${detail.length} events shown</span></div><div class="tablebox" style="margin-top:8px"><table><thead><tr><th>Time</th><th>Event</th><th>Decision / state</th></tr></thead><tbody>${detail.map(r=>`<tr class="auditrow ${r[1]==='execution.resume'?'audit-resume':''}"><td class="mono">${r[0]}</td><td><span class="audit-event">${r[1]}</span></td><td><b>${r[2]}</b><span class="audit-detail">${r[3]}</span></td></tr>`).join('')}</tbody></table></div></div>`);
+   return;
+ }
+ const cards=S.containers.map(c=>{
+   const ce=events.filter(e=>e[1]===c.n), bad=ce.filter(e=>e[5]==='bad').length, warn=ce.filter(e=>e[5]==='warn').length;
+   return `<button class="auditcvm" data-do="auditCVM" data-arg="${c.n}"><div><b>${c.name}</b><span>${c.app} · ${c.model}</span></div><div class="auditmeta"><strong>${ce.length}</strong> recent events ${bad?`<em class="bad">${bad} exception</em>`:warn?`<em>${warn} attention</em>`:'<em class="good">healthy</em>'}</div></button>`
+ }).join('');
+ render('audit',['Governance','Audit Logs'],`<div class="pagehead"><div><div class="eye">AI Admin · fleet-wide immutable execution history</div><h1>Audit logs</h1><div class="sub">Start with the entire fleet. Select any CVM to inspect its policy decisions, checkpoints, effects, runtime changes and recovery lineage.</div></div><div class="actions"><span class="livebadge" style="margin:0"><i></i>live</span></div></div>
+ <div class="bigstats">${big({label:'Events today',value:'18,442',sub:'fleet execution + governance'})}${big({label:'CVM containers',value:String(S.containers.length),sub:'auditable fleet'})}${big({label:'Runtime moves',value:'14',sub:'model / infrastructure rebinds'})}${big({label:'Recovery resumes',value:'61',sub:'from durable checkpoints'})}</div>
+ <div class="section"><div class="cardhead"><h3>CVM containers</h3><span class="sub">select a CVM for its audit trail</span></div><div class="auditfleet">${cards}</div></div>
+ <div class="section"><div class="cardhead"><h3>All recent audit events</h3><span class="sub">across the fleet</span></div><div class="tablebox" style="margin-top:8px"><table><thead><tr><th>Time</th><th>CVM</th><th>Transaction</th><th>Event</th><th>State</th></tr></thead><tbody>${events.map(r=>{const c=containerBy(r[1]);return `<tr class="auditrow"><td class="mono">${r[0]}</td><td><button class="linkbtn" data-do="auditCVM" data-arg="${r[1]}">${c.name}</button></td><td class="audit-id">${r[2]}</td><td>${r[3]}</td><td>${r[4]}</td></tr>`}).join('')}</tbody></table></div></div>`) }
+function auditCVM(n){S.auditContainer=n;auditPage()}
+function auditBack(){S.auditContainer=null;auditPage()}
+function saveIntent(){S.nlIntent=$('nlIntent')?.value||''; toast(S.nlIntent?'Natural language intent saved':'Intent cleared')}
+
 /* ---------- Cost Governance ---------- */
 const MODEL_COST={aws:0.21,azure:0.24,gcp:0.11};const INFRA=0.06;const CFACT={Insurance:1.1,Commerce:.8,Finance:1.3,IT:.7,Procurement:.9,Legal:1.6,Engineering:1.2,'HR / IT':.7,'Financial Services':1.4,Operations:1.0};
 const COST14=[318,312,306,301,297,292,288,283,279,271,266,259,254,249];
@@ -1499,11 +1674,13 @@ function onTxDone(c,t,failed){spendLog(c,t&&t.rulesUsed&&t.rulesUsed.length);pai
    the fleet. Agent desktop (operations user) sees only what needs them.
    ===================================================================== */
 const PERSONAS={
-  exec:{l:'Executive',sub:'CAIO · CISO',home:'exec',nav:[{id:'exec',l:'Overview',ic:'◔'},{id:'insights',l:'Reliability',ic:'◈'},{id:'security',l:'Security',ic:'⛨'},{id:'cost',l:'Cost',ic:'$'}]},
-  admin:{l:'Admin',sub:'IT · Security',home:'home',nav:[{id:'home',l:'Fleet',ic:'◔'},{id:'containers',l:'Containers',ic:'▣'},{id:'transactions',l:'Transactions',ic:'⇄'},{id:'insights',l:'Reliability',ic:'◈'},{grp:'Governance'},{id:'policies',l:'Policies',ic:'§'},{id:'security',l:'Security',ic:'⛨'},{id:'cost',l:'Cost',ic:'$'},{grp:'Build'},{id:'build',l:'CVM Builder',ic:'✦'},{id:'dev',l:'Developer',ic:'</>'}]},
-  agent:{l:'Agent desktop',sub:'Priya Nair · Operations',home:'queue',nav:[{id:'queue',l:'My queue',ic:'☰'},{id:'activity',l:'Done for me',ic:'✓'}]}};
+  aidev:{l:'AI Dev',sub:'Build · Test · Integrate',home:'build',nav:[{id:'build',l:'CVM Builder',ic:'✦'},{id:'dev',l:'Developer Tools',ic:'</>'},{id:'containers',l:'Containers',ic:'▣'},{id:'transactions',l:'Transactions',ic:'⇄'}]},
+  aiops:{l:'AI Ops',sub:'Operate · Recover · Port',home:'home',nav:[{id:'home',l:'Fleet',ic:'◔'},{id:'containers',l:'Containers',ic:'▣'},{id:'portability',l:'Portability Demo',ic:'⇆'},{id:'transactions',l:'Transactions',ic:'⇄'},{id:'insights',l:'Reliability',ic:'◈'}]},
+  admin:{l:'AI Admin',sub:'Govern · Secure · Audit',home:'security',nav:[{id:'security',l:'Security',ic:'⛨'},{id:'audit',l:'Audit Logs',ic:'≡'},{id:'policies',l:'Policies',ic:'§'},{id:'cost',l:'Cost',ic:'$'},{id:'containers',l:'Containers',ic:'▣'}]},
+  exec:{l:'Executive',sub:'Outcomes · Risk · Efficiency',home:'exec',nav:[{id:'exec',l:'Overview',ic:'◔'},{id:'insights',l:'Reliability',ic:'◈'},{id:'security',l:'Security',ic:'⛨'},{id:'cost',l:'Cost',ic:'$'}]}
+};
 function navFor(){return PERSONAS[S.persona||'exec'].nav}
-function setPersona(p,{go:g=true}={}){S.persona=p;document.body.className='p-'+p;setText('personaSub',PERSONAS[p].sub);setHTML('personaSeg',Object.entries(PERSONAS).map(([k,v])=>`<button class="${k===p?'on':''}" data-do="setPersona" data-arg="${k}">${v.l}</button>`).join(''));if(p!=='admin'&&S.console)toggleConsole(false);closeScenario();if(g)go(PERSONAS[p].home)}
+function setPersona(p,{go:g=true}={}){S.persona=p;document.body.className='p-'+p;setText('personaSub',PERSONAS[p].sub);setHTML('personaSeg',Object.entries(PERSONAS).map(([k,v])=>`<button class="${k===p?'on':''}" data-do="setPersona" data-arg="${k}">${v.l}</button>`).join(''));if(!['admin','aiops'].includes(p)&&S.console)toggleConsole(false);closeScenario();if(g)go(PERSONAS[p].home)}
 function toggleScenario(){const s=$('scenario');s.classList.toggle('show');closeMenu();syncScenBtn()}
 function closeScenario(){const s=$('scenario');if(s)s.classList.remove('show')}
 function syncScenBtn(){const armed=['f503','wfail','bout','nhum'].some(k=>$(k)&&$(k).checked);const b=$('scenBtn');if(b){b.classList.toggle('armed',armed);b.textContent=armed?'Scenario · armed':'Scenario'}}
@@ -1523,7 +1700,7 @@ function paintExec(){if(S.page!=='exec')return;const at=attention();const human=
 function qItems(){return attention().map(({c,r})=>{const st=r.state;const kind=st==='HUMAN_NEEDED'?'urgent':'hold';const what=st==='POLICY_HOLD'?{t:'Approval needed',why:r.hold,acts:c.n==='04'?[['resolveHold','approve','Approve access','amber'],['resolveHold','readonly','Restrict to read-only','ghost']]:[['resolveHold','approve','Approve','amber'],['resolveHold','decline','Decline','ghost']]}:st==='WAITING_EXTERNAL'?{t:'Waiting on someone else',why:(c.n==='08'?'The manager has not chosen equipment yet.':'The vendor has not returned the W-9 and bank verification.')+' Nothing is held while it waits.',acts:[['resolveWait','event',c.n==='08'?'Mark as received':'Mark documents received','amber'],['resolveWait','remind',c.n==='08'?'Send reminder':'Request again','ghost']]}:{t:'Needs your judgement',why:r.proposed?`A learned fix (${r.proposed.id}) is ready. This container is set to ask before applying one.`:'The upstream system rejected the record with a change no rule recognises. Choose how to handle it; the choice becomes a rule.',acts:[['openDiagnosis','','Review and fix','']]};return{c,r,kind,what}})}
 function queuePage(){const items=qItems();render('queue',['Agent desktop','My queue'],`<div class="hello"><div class="eye">Good ${new Date().getHours()<12?'morning':new Date().getHours()<18?'afternoon':'evening'}, Priya</div><h1 id="q-head">${items.length?`<span class="warn">${items.length} item${items.length===1?'':'s'}</span> waiting for you.`:'Nothing is waiting for you.'}</h1><div class="sub">Your agents work on their own. This is the short list only you can decide.</div></div>
 <div class="qgrid"><div id="qlist">${items.map(qCard).join('')||'<div class="empty">All clear. Anything that needs you will appear here.</div>'}</div>
-<div><div class="section" style="margin-top:14px"><div class="cardhead"><h3>Done for you today</h3><span class="sub">automatic</span></div><div class="done" id="donelist">${doneList(8)}</div></div><div class="section"><div class="cardhead"><h3>Your agents</h3></div>${myAgents()}</div></div></div>`);}
+<div><div class="section" style="margin-top:14px"><div class="cardhead"><h3>Transaction Auto Recovery</h3><span class="sub">automatic</span></div><div class="done" id="donelist">${doneList(8)}</div></div><div class="section"><div class="cardhead"><h3>Your agents</h3></div>${myAgents()}</div></div></div>`);}
 function qCard({c,r,kind,what}){return`<div class="qcard ${kind}" id="q-${c.n}"><div class="qh"><div><b>${esc(r.subject||c.subject)}</b><span>${c.name} · ${what.t} · waiting ${r.waitLabel||'just now'}</span></div><span class="status ${kind==='urgent'?'s-bad':'s-warn'}">${what.t}</span></div><div class="qwhy"><b>Why</b>${esc(what.why||'')}</div><div class="qa">${what.acts.map(([fn,arg,l,cls])=>`<button class="btn ${cls}" data-do="qAct" data-arg="${c.n}|${fn}|${arg}">${l}</button>`).join('')}<span class="muted">Nothing has been committed. It resumes from the checkpoint when you decide.</span></div></div>`}
 function qAct(arg){const [n,fn,a]=arg.split('|');S.active=n;const f={resolveHold,resolveWait,openDiagnosis}[fn];if(f)f(a||undefined);setTimeout(paintQueue,300)}
 function doneList(n){const mine=S.activity.filter(x=>x.c&&/completed|self-recovered|recovering itself|received|learned/.test(x.title)).slice(0,n);return mine.map(x=>{const c=containerBy(x.c);const auto=/recover/.test(x.title);return`<div class="dn${auto?' am':''}" data-do="openDone" data-arg="${x.c}"><i>${auto?'↻':'✓'}</i><div><b>${esc(x.title.replace(/ on (AWS Bedrock|Azure AI|Vertex AI) · [^·]+$/,''))}</b><span>${esc(x.detail)}</span></div><em>${x.t}</em></div>`}).join('')||'<div class="note">Completed work appears here as it happens.</div>'}
@@ -1536,9 +1713,11 @@ function activityPage(){render('activity',['Agent desktop','Done for me'],`<div 
 /* =====================================================================
    WIRING
    ===================================================================== */
-const ACTIONS={go,setPersona,toggleScenario,qAct,openDone,openContainer,openHeld,openLineage,openTx,openTxG,openCall,secFilter,tlRange,runTx,toggleLive,toggleDetails,moreActivity,switchModel,replayCp,resolveWait,resolveHold,openDiagnosis,applyFix,inspect,toggleConsole:()=>toggleConsole(),setTab,pickTarget,pickContainer,copyState,toggleMenu,reset,addPolicy,commitPolicy,importRule,addSecurity,commitSecurity,closeModal,setSource,deconstruct,addFlowStep,removeFlow,localPolicy,commitLocal,buildBack,buildContainer,toSim,runSim,deploy,runWatch,setSpeed,setContainersTab,portModal,confirmPortBind};
+const ACTIONS={go,setPersona,toggleScenario,qAct,openDone,openContainer,openHeld,openLineage,openTx,openTxG,openCall,secFilter,tlRange,runTx,toggleLive,toggleDetails,moreActivity,switchModel,replayCp,resolveWait,resolveHold,openDiagnosis,applyFix,inspect,toggleConsole:()=>toggleConsole(),setTab,pickTarget,pickContainer,copyState,toggleMenu,reset,addPolicy,commitPolicy,importRule,addSecurity,commitSecurity,closeModal,setSource,deconstruct,addFlowStep,removeFlow,localPolicy,commitLocal,buildBack,buildContainer,toSim,runSim,deploy,runWatch,setSpeed,setContainersTab,portModal,confirmPortBind,advancePortability,resetPortability,auditCVM,auditBack,saveIntent,choosePortModel,setBuildSourceMode,constructFromIntent,useIntentPreset};
 const CHANGES={scenChange,targetChange,pickTargetSel,pickModel,filterContainers,toggleProvider,toggleSrc,toggleAcl,togglePol,removeLocalChk,setAutonomy,ruleSwitch,txFilterC,txFilterO};
 const INPUTS={editFlow,editBranch,filterContainers,bsourceInput};
+document.addEventListener('change',e=>{if(e.target&&e.target.id==='portModel')choosePortModel(e.target.value)});
+document.addEventListener('input',e=>{if(e.target&&e.target.id==='sourceIntent'){S.build.nlIntent=e.target.value;const b=$('intentConstruct');if(b)b.disabled=e.target.value.trim().length<=15}});
 document.addEventListener('click',e=>{const el=e.target.closest('[data-do]');if(!el)return;if(el.dataset.stop)e.stopPropagation();const fn=ACTIONS[el.dataset.do];if(fn)fn(el.dataset.arg!==undefined?el.dataset.arg:el)});
 document.addEventListener('change',e=>{const el=e.target.closest('[data-change]');if(!el)return;const fn=CHANGES[el.dataset.change];if(fn)fn(el)});
 document.addEventListener('input',e=>{const el=e.target.closest('[data-input]');if(!el)return;const fn=INPUTS[el.dataset.input];if(fn)fn(el)});
